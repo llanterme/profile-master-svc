@@ -2,6 +2,7 @@ za/co/digitalcowboy/profile/master/service/domain/ErrorResponseEntry.class
 za/co/digitalcowboy/profile/master/service/config/DynamoDbConfig.class
 za/co/digitalcowboy/profile/master/service/domain/LocalDateSerializer.class
 za/co/digitalcowboy/profile/master/service/domain/ProfileRequest.class
+za/co/digitalcowboy/profile/master/service/domain/Version.class
 za/co/digitalcowboy/profile/master/service/exception/GlobalExceptionHandler.class
 za/co/digitalcowboy/profile/master/service/exception/ErrorCode.class
 za/co/digitalcowboy/profile/master/service/controller/RestController.class

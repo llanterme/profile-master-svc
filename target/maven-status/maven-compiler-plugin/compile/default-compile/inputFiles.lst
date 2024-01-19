@@ -22,4 +22,5 @@
 /Users/luke/Documents/Code/Personal/Java/Projects/profile-master-svc/src/main/java/za/co/digitalcowboy/profile/master/service/service/ProfileService.java
 /Users/luke/Documents/Code/Personal/Java/Projects/profile-master-svc/src/main/java/za/co/digitalcowboy/profile/master/service/domain/LocalDateDeserializer.java
 /Users/luke/Documents/Code/Personal/Java/Projects/profile-master-svc/src/main/java/za/co/digitalcowboy/profile/master/service/config/AppConfig.java
+/Users/luke/Documents/Code/Personal/Java/Projects/profile-master-svc/src/main/java/za/co/digitalcowboy/profile/master/service/domain/Version.java
 /Users/luke/Documents/Code/Personal/Java/Projects/profile-master-svc/src/main/java/za/co/digitalcowboy/profile/master/service/domain/ProfileRequest.java
