@@ -3,10 +3,10 @@ FROM amazoncorretto:11
 ARG JAR_FILE
 ARG ARTIFACT_ID
 
-EXPOSE 9022
+EXPOSE 8001
 
 #ADD ./target/${JAR_FILE} app.jar
-ADD ./target/global-services-1.0-SNAPSHOT.jar app.jar
+ADD ./target/profile-master-svc-1.0-SNAPSHOT.jar app.jar
 
 RUN sh -c 'touch /app.jar'
 

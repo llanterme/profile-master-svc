@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import za.co.digitalcowboy.profile.master.service.domain.Payment;
 import za.co.digitalcowboy.profile.master.service.domain.ProfileRequest;
+import za.co.digitalcowboy.profile.master.service.domain.Version;
 import za.co.digitalcowboy.profile.master.service.service.ProfileService;
 
 @org.springframework.web.bind.annotation.RestController
@@ -20,7 +21,7 @@ public class RestController {
     ProfileService profileService;
 
     @RequestMapping(path = "/payment", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Payment> getHealth() {
+    public ResponseEntity<Payment> processPayment() {
 
         Payment payment = Payment.builder()
                 .status("Authorized")
@@ -35,5 +36,16 @@ public class RestController {
 
         profileService.saveProfileEvent(profileRequest);
         return ResponseEntity.status(HttpStatus.OK).body("OK");
+    }
+
+    @RequestMapping(path = "/health", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Version> getHealth() {
+
+        Version version = new Version();
+        version.setService("Prolfile Master Service");
+        version.setMessage("Healthy");
+        version.setServiceVersion("1.0.0");
+
+        return ResponseEntity.status(HttpStatus.OK).body(version);
     }
 }

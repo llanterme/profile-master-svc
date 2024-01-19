@@ -8,6 +8,7 @@ za/co/digitalcowboy/profile/master/service/controller/RestController.class
 za/co/digitalcowboy/profile/master/service/domain/LocalDateTimeDeserializer.class
 za/co/digitalcowboy/profile/master/service/entity/DynamoEventEntity$DynamoEventEntityBuilder.class
 za/co/digitalcowboy/profile/master/service/service/impl/ProfileServiceImpl.class
+za/co/digitalcowboy/profile/master/service/domain/Payment.class
 za/co/digitalcowboy/profile/master/service/Debug.class
 za/co/digitalcowboy/profile/master/service/domain/ErrorResponseEntry$ErrorResponseEntryBuilder.class
 za/co/digitalcowboy/profile/master/service/entity/DynamoEventEntity.class
@@ -15,6 +16,7 @@ za/co/digitalcowboy/profile/master/service/exception/DomainException.class
 za/co/digitalcowboy/profile/master/service/domain/LocalDateTimeSerializer.class
 za/co/digitalcowboy/profile/master/service/config/AppConfig.class
 za/co/digitalcowboy/profile/master/service/service/ProfileService.class
+za/co/digitalcowboy/profile/master/service/domain/Payment$PaymentBuilder.class
 za/co/digitalcowboy/profile/master/service/exception/ServiceIdentifier.class
 za/co/digitalcowboy/profile/master/service/domain/ErrorResponse.class
 za/co/digitalcowboy/profile/master/service/exception/SystemIdentifier.class

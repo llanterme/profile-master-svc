@@ -5,5 +5,5 @@ Resources:
       Properties:
         TaskDefinition:  "<TASK_DEFINITION>"
         LoadBalancerInfo:
-          ContainerName: "global-services-container"
+          ContainerName: "profile-master-service-container"
           ContainerPort: 9022

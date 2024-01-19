@@ -14,7 +14,7 @@ phases:
       - aws --version
       - echo Logging in to Docker Hub...
       - echo Passw0rd1 | docker login --username llanterme --password-stdin
-      - REPOSITORY_URI=634182598822.dkr.ecr.eu-west-2.amazonaws.com/global-services
+      - REPOSITORY_URI=634182598822.dkr.ecr.eu-west-2.amazonaws.com/profile-master-service
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
