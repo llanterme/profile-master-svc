@@ -1,0 +1,9 @@
+{
+  "id": 62,
+  "event_id": "8bd20642-3158-45a0-b64b-f6be173e2835",
+  "topic": "orders-topic",
+  "type": "ORDER_CREATED",
+  "payload": "{\"id\":\"8bd20642-3158-45a0-b64b-f6be173e2835\",\"version\":\"1.0\",\"type\":\"ORDER_CREATED\",\"time\":\"2023-03-22T12:18:40.978508\",\"source\":\"co.za.digital.cowboy.orders\",\"detail\":{\"orderId\":309,\"orderType\":\"MERCHANT\",\"orderMessage\":\"NEW_ORDER_PLACED\",\"orderStatus\":\"NEW\"},\"context\":{}}",
+  "event_time": 1679480321000,
+  "created_date": 1679480321000
+}
