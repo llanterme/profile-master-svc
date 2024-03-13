@@ -6,4 +6,4 @@ Resources:
         TaskDefinition:  "<TASK_DEFINITION>"
         LoadBalancerInfo:
           ContainerName: "profile-master-service-container"
-          ContainerPort: 9022
+          ContainerPort: 8001
