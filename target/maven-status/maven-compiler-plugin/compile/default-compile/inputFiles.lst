@@ -1,4 +1,5 @@
 /Users/luke/Documents/Code/Personal/Java/Projects/profile-master-svc/src/main/java/za/co/digitalcowboy/profile/master/service/exception/GlobalExceptionHandler.java
+/Users/luke/Documents/Code/Personal/Java/Projects/profile-master-svc/src/main/java/za/co/digitalcowboy/profile/master/service/entity/DynamoReadProfileEntity.java
 /Users/luke/Documents/Code/Personal/Java/Projects/profile-master-svc/src/main/java/za/co/digitalcowboy/profile/master/service/domain/LocalDateTimeDeserializer.java
 /Users/luke/Documents/Code/Personal/Java/Projects/profile-master-svc/src/main/java/za/co/digitalcowboy/profile/master/service/domain/LocalDateSerializer.java
 /Users/luke/Documents/Code/Personal/Java/Projects/profile-master-svc/src/main/java/za/co/digitalcowboy/profile/master/service/domain/MessageType.java

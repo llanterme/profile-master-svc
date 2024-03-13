@@ -5,6 +5,7 @@ za/co/digitalcowboy/profile/master/service/domain/ProfileRequest.class
 za/co/digitalcowboy/profile/master/service/domain/Version.class
 za/co/digitalcowboy/profile/master/service/exception/GlobalExceptionHandler.class
 za/co/digitalcowboy/profile/master/service/exception/ErrorCode.class
+za/co/digitalcowboy/profile/master/service/entity/DynamoReadProfileEntity$DynamoReadProfileEntityBuilder.class
 za/co/digitalcowboy/profile/master/service/controller/RestController.class
 za/co/digitalcowboy/profile/master/service/domain/LocalDateTimeDeserializer.class
 za/co/digitalcowboy/profile/master/service/entity/DynamoEventEntity$DynamoEventEntityBuilder.class
@@ -14,6 +15,7 @@ za/co/digitalcowboy/profile/master/service/Debug.class
 za/co/digitalcowboy/profile/master/service/domain/ErrorResponseEntry$ErrorResponseEntryBuilder.class
 za/co/digitalcowboy/profile/master/service/entity/DynamoEventEntity.class
 za/co/digitalcowboy/profile/master/service/exception/DomainException.class
+za/co/digitalcowboy/profile/master/service/entity/DynamoReadProfileEntity.class
 za/co/digitalcowboy/profile/master/service/domain/LocalDateTimeSerializer.class
 za/co/digitalcowboy/profile/master/service/config/AppConfig.class
 za/co/digitalcowboy/profile/master/service/service/ProfileService.class
