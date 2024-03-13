@@ -22,6 +22,7 @@
         <aws.version>1.12.186</aws.version>
         <deploy.image>${project.artifactId}:%l</deploy.image>
         <docker.plugin.version>0.38.1</docker.plugin.version>
+        <compiler.plugin.version>3.11.0</compiler.plugin.version>
 
     </properties>
 
@@ -208,22 +209,19 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.9.0</version> <!-- Update the version to a supported one -->
-                <configuration>
-                    <source>16</source>
-                    <target>16</target>
-                </configuration>
+                <version>3.11.0</version> <!-- Update the version to a supported one -->
+
             </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
+                    <version>${compiler.plugin.version}</version>
                     <configuration>
-                        <encoding>UTF-8</encoding>
-                        <source>${maven.compiler.source}</source>
-                        <target>${maven.compiler.target}</target>
+                        <source>11</source>
+                        <target>11</target>
                     </configuration>
                 </plugin>
 
