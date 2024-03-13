@@ -9,6 +9,7 @@ import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
 import software.amazon.awssdk.enhanced.dynamodb.Key;
 import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
 import software.amazon.awssdk.enhanced.dynamodb.model.BatchWriteItemEnhancedRequest;
+import software.amazon.awssdk.enhanced.dynamodb.model.Page;
 import software.amazon.awssdk.enhanced.dynamodb.model.PutItemEnhancedRequest;
 import software.amazon.awssdk.enhanced.dynamodb.model.WriteBatch;
 import za.co.digitalcowboy.profile.master.service.config.DynamoDbConfig;
@@ -17,6 +18,7 @@ import za.co.digitalcowboy.profile.master.service.entity.DynamoEventEntity;
 import za.co.digitalcowboy.profile.master.service.entity.DynamoReadProfileEntity;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -71,7 +73,14 @@ public class DynamoProfileEventsRepository {
         DynamoDbTable<DynamoReadProfileEntity> readTable = dynamoDbenhancedClient.table(dynamoDbConfig.getProfileReadTable(),
                 TableSchema.fromBean(DynamoReadProfileEntity.class));
 
-        return readTable.scan().items().stream().toList();
+        List<DynamoReadProfileEntity> resultList = new ArrayList<>();
+        Iterator<Page<DynamoReadProfileEntity>> iterator = readTable.scan().iterator();
+        while (iterator.hasNext()) {
+            Page<DynamoReadProfileEntity> page = iterator.next();
+            resultList.addAll(page.items());
+        }
+        return resultList;
+
 
     }
 
