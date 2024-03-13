@@ -6,11 +6,14 @@ import org.springframework.stereotype.Service;
 import za.co.digitalcowboy.profile.master.service.domain.MessageType;
 import za.co.digitalcowboy.profile.master.service.domain.ProfileRequest;
 import za.co.digitalcowboy.profile.master.service.entity.DynamoEventEntity;
+import za.co.digitalcowboy.profile.master.service.entity.DynamoReadProfileEntity;
 import za.co.digitalcowboy.profile.master.service.repository.DynamoProfileEventsRepository;
 import za.co.digitalcowboy.profile.master.service.service.ProfileService;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -62,5 +65,35 @@ public class ProfileServiceImpl implements ProfileService {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    @Override
+    public ProfileRequest getProfile(String id) {
+        var fetchedProfile = dynamoProfileEventsRepository.getProfile(id);
+        var profile  = ProfileRequest.builder()
+                .status(fetchedProfile.getStatus())
+                .emailAddress(fetchedProfile.getEmail())
+                .profileId(id)
+                .id(id)
+                .name(fetchedProfile.getName())
+                .surname(fetchedProfile.getSurname())
+                .build();
+
+        return profile;
+
+    }
+
+    @Override
+    public List<ProfileRequest> getAllProfiles() {
+        return dynamoProfileEventsRepository.fetchAllProfiles().stream()
+                .map(profileEntity -> ProfileRequest.builder()
+                        .id(profileEntity.getId())
+                        .profileId(profileEntity.getProfile_id())
+                        .name(profileEntity.getName())
+                        .surname(profileEntity.getSurname())
+                        .emailAddress(profileEntity.getEmail())
+                        .status(profileEntity.getStatus())
+                        .build())
+                .collect(Collectors.toList());
     }
 }

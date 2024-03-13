@@ -6,6 +6,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
+import software.amazon.awssdk.enhanced.dynamodb.Key;
 import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
 import software.amazon.awssdk.enhanced.dynamodb.model.BatchWriteItemEnhancedRequest;
 import software.amazon.awssdk.enhanced.dynamodb.model.PutItemEnhancedRequest;
@@ -13,6 +14,7 @@ import software.amazon.awssdk.enhanced.dynamodb.model.WriteBatch;
 import za.co.digitalcowboy.profile.master.service.config.DynamoDbConfig;
 import za.co.digitalcowboy.profile.master.service.domain.ProfileRequest;
 import za.co.digitalcowboy.profile.master.service.entity.DynamoEventEntity;
+import za.co.digitalcowboy.profile.master.service.entity.DynamoReadProfileEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +51,32 @@ public class DynamoProfileEventsRepository {
             System.out.println(e.getMessage());
         }
     }
+
+    public DynamoReadProfileEntity getProfile(String id) {
+
+        DynamoDbTable<DynamoReadProfileEntity> readTable = dynamoDbenhancedClient.table(dynamoDbConfig.getProfileReadTable(),
+                TableSchema.fromBean(DynamoReadProfileEntity.class));
+
+           var profile =  readTable.getItem(
+                    Key.builder()
+                            .partitionValue(id)
+                            .sortValue(id)
+                            .build());
+           return profile;
+
+    }
+
+    public List<DynamoReadProfileEntity> fetchAllProfiles() {
+
+        DynamoDbTable<DynamoReadProfileEntity> readTable = dynamoDbenhancedClient.table(dynamoDbConfig.getProfileReadTable(),
+                TableSchema.fromBean(DynamoReadProfileEntity.class));
+
+        return readTable.scan().items().stream().toList();
+
+    }
+
+
+
 
     private DynamoDbTable<DynamoEventEntity> getTable() {
         return dynamoDbenhancedClient.table(dynamoDbConfig.getProfileTableName(),

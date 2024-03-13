@@ -12,6 +12,7 @@ import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.regions.Region;
 import za.co.digitalcowboy.profile.master.service.entity.DynamoEventEntity;
+import za.co.digitalcowboy.profile.master.service.entity.DynamoReadProfileEntity;
 
 import java.net.URI;
 
@@ -22,11 +23,9 @@ import java.net.URI;
 public class DynamoDbConfig {
 
         private String profileTableName = "profile-master-events-table";
+        private String profileReadTable = "profile-master-read-table";
 
-    public DynamoDbConfig() {
-
-    }
-
+    public DynamoDbConfig() {}
 
     private DynamoDbClient dynamoDbClient() {
         return DynamoDbClient
@@ -35,7 +34,6 @@ public class DynamoDbConfig {
                 .region(Region.EU_WEST_2)
                 .build();
     }
-
 
     @Bean
     public DynamoDbEnhancedClient dynamoDbEnhancedClient() {
@@ -48,5 +46,10 @@ public class DynamoDbConfig {
     @Bean
     public DynamoDbTable<DynamoEventEntity> transactionTable() {
         return dynamoDbEnhancedClient().table(profileTableName, TableSchema.fromBean(DynamoEventEntity.class));
+    }
+
+    @Bean
+    public DynamoDbTable<DynamoReadProfileEntity> profileReadTable() {
+        return dynamoDbEnhancedClient().table(profileReadTable, TableSchema.fromBean(DynamoReadProfileEntity.class));
     }
 }
