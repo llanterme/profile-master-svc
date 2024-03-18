@@ -52,7 +52,9 @@ public enum ErrorCode {
   LIMIT_ALREADY_DISABLED("066", "Limit rule with id [%s] is already disabled"),
   INVALID_LIMIT_BETWEEN_SCOPE_AND_PERIOD("067", "Limit rule [%s] is invalid between scope and period"),
   INVALID_LIMIT_PROFILE_TYPE_VALUES("068", "Limit rule [%s] is invalid profile type values"),
-  INVALID_LIMIT_VALUE("069", "Limit rule [%s] is invalid value");
+  INVALID_LIMIT_VALUE("069", "Limit rule [%s] is invalid value"),
+
+  UNABLE_SO_SAVE_PROFILE("070", "Unable to save profile");
 
   private final String value;
 

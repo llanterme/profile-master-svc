@@ -7,6 +7,8 @@ import za.co.digitalcowboy.profile.master.service.domain.MessageType;
 import za.co.digitalcowboy.profile.master.service.domain.ProfileRequest;
 import za.co.digitalcowboy.profile.master.service.entity.DynamoEventEntity;
 import za.co.digitalcowboy.profile.master.service.entity.DynamoReadProfileEntity;
+import za.co.digitalcowboy.profile.master.service.exception.DomainException;
+import za.co.digitalcowboy.profile.master.service.exception.ErrorCode;
 import za.co.digitalcowboy.profile.master.service.repository.DynamoProfileEventsRepository;
 import za.co.digitalcowboy.profile.master.service.service.ProfileService;
 
@@ -29,13 +31,13 @@ public class ProfileServiceImpl implements ProfileService {
     DynamoProfileEventsRepository dynamoProfileEventsRepository;
 
     @Override
-    public void saveProfileEvent(ProfileRequest profileRequest) {
+    public ProfileRequest saveProfileEvent(ProfileRequest profileRequest) {
         try {
 
             MessageType messageType;
             String profileId;
 
-                if (profileRequest.getProfileId().isBlank()) {
+                if (profileRequest.getProfileId() == null) {
                 messageType = MessageType.PROFILE_CREATED;
                 profileId = UUID.randomUUID().toString();
 
@@ -61,8 +63,10 @@ public class ProfileServiceImpl implements ProfileService {
 
             dynamoProfileEventsRepository.save(newProfileEvent);
 
+            return profileRequest;
+
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new DomainException(ErrorCode.UNABLE_SO_SAVE_PROFILE);
         }
 
     }

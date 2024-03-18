@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ProfileService {
 
-    void saveProfileEvent(ProfileRequest profileRequest);
+    ProfileRequest saveProfileEvent(ProfileRequest profileRequest);
 
     ProfileRequest getProfile(String id);
 

@@ -32,10 +32,10 @@ public class RestController {
 
 
     @RequestMapping(path = "/profile", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity createOrUpdateProfile(@RequestBody ProfileRequest profileRequest) {
+    public ResponseEntity<ProfileRequest> createOrUpdateProfile(@RequestBody ProfileRequest profileRequest) {
 
         profileService.saveProfileEvent(profileRequest);
-        return ResponseEntity.status(HttpStatus.OK).body("OK");
+        return ResponseEntity.status(HttpStatus.OK).body(profileService.saveProfileEvent(profileRequest));
     }
 
     @RequestMapping(path = "/health", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
