@@ -34,7 +34,6 @@ public class RestController {
     @RequestMapping(path = "/profile", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ProfileRequest> createOrUpdateProfile(@RequestBody ProfileRequest profileRequest) {
 
-        profileService.saveProfileEvent(profileRequest);
         return ResponseEntity.status(HttpStatus.OK).body(profileService.saveProfileEvent(profileRequest));
     }
 
@@ -52,6 +51,11 @@ public class RestController {
     @RequestMapping(path = "/profile/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ProfileRequest> getProfile(@PathVariable String id) {
         return ResponseEntity.status(HttpStatus.OK).body(profileService.getProfile(id));
+    }
+
+    @RequestMapping(path = "/email/{email}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ProfileRequest> getProfileByEmail(@PathVariable String email) {
+        return ResponseEntity.status(HttpStatus.OK).body(profileService.getProfileByEmail(email));
     }
 
     @RequestMapping(path = "/profiles", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

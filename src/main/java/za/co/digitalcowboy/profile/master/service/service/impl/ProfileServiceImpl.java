@@ -37,7 +37,7 @@ public class ProfileServiceImpl implements ProfileService {
             MessageType messageType;
             String profileId;
 
-                if (profileRequest.getProfileId() == null) {
+                if (profileRequest.getProfileId().isBlank()) {
                 messageType = MessageType.PROFILE_CREATED;
                 profileId = UUID.randomUUID().toString();
 
@@ -85,6 +85,23 @@ public class ProfileServiceImpl implements ProfileService {
 
         return profile;
 
+    }
+
+
+    @Override
+    public ProfileRequest getProfileByEmail(String email) {
+        var fetchedProfile = dynamoProfileEventsRepository.getProfileByEmail(email);
+
+        var profile  = ProfileRequest.builder()
+                .status(fetchedProfile.get(0).getStatus())
+                .emailAddress(email)
+                .profileId(fetchedProfile.get(0).getProfile_id())
+                .id(fetchedProfile.get(0).getId())
+                .name(fetchedProfile.get(0).getName())
+                .surname(fetchedProfile.get(0).getSurname())
+                .build();
+
+        return profile;
     }
 
     @Override

@@ -9,6 +9,8 @@ public interface ProfileService {
 
     ProfileRequest getProfile(String id);
 
+    ProfileRequest getProfileByEmail(String email);
+
     List<ProfileRequest> getAllProfiles();
 
 }
