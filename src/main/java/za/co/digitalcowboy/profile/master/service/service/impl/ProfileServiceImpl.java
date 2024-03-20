@@ -37,14 +37,14 @@ public class ProfileServiceImpl implements ProfileService {
             MessageType messageType;
             String profileId;
 
-                if (profileRequest.getProfileId().isBlank()) {
+            if (profileRequest.getProfileId() == null || profileRequest.getProfileId().isBlank()) {
                 messageType = MessageType.PROFILE_CREATED;
                 profileId = UUID.randomUUID().toString();
-
             } else {
                 messageType = MessageType.PROFILE_MODIFIED;
                 profileId = profileRequest.getProfileId();
             }
+
 
             String eventId = UUID.randomUUID().toString();
             String Id = UUID.randomUUID().toString();
